@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #ffffff;
+      margin: 0;
+      padding: 30px 25px;
+      color: #1f4e79;
+      max-width: 400px;
+    }
 
+    h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #1f4e79;
+    }
+
+    .desc {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .form-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    input[type="number"] {
+      width: 90px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .unit {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .result {
+      font-size: 14px;
+      margin-top: 8px;
+      color: #333;
+    }
+
+    .total {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h3>Enter Your Height</h3>
+  <div class="desc">Use Feet and Inches. This is your divine measure.</div>
+
+  <div class="form-row">
+    <input type="number" id="feet" min="0" max="8" placeholder="Feet" required>
+    <span class="unit">ft</span>
+  </div>
+
+  <div class="form-row">
+    <input type="number" id="inches" min="0" max="11" placeholder="Inches" required>
+    <span class="unit">in</span>
+  </div>
+
+  <div class="result">Total: <span class="total" id="heightTotal">0</span> inches</div>
+
+  <script>
+    function updateHeight() {
+      const feet = parseInt(document.getElementById('feet').value) || 0;
+      const inches = parseInt(document.getElementById('inches').value) || 0;
+      const totalInches = (feet * 12) + inches;
+      document.getElementById('heightTotal').innerText = totalInches;
+    }
+
+    document.getElementById('feet').addEventListener('input', updateHeight);
+    document.getElementById('inches').addEventListener('input', updateHeight);
+  </script>
+
+</body>
+</html>
